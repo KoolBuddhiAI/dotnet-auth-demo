@@ -35,6 +35,7 @@ export default function Home() {
             <Link href="/" className="text-blue-400 font-medium">Home</Link>
             <Link href="/developers" className="text-gray-400 hover:text-white transition-colors">Developer Portal</Link>
             <Link href="/docs" className="text-gray-400 hover:text-white transition-colors">API Docs</Link>
+            <Link href="/admin" className="text-gray-400 hover:text-white transition-colors">Admin</Link>
           </nav>
         </div>
       </header>

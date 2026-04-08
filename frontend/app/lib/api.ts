@@ -160,3 +160,78 @@ export async function callProtectedQuotes(token: string): Promise<unknown> {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
   });
 }
+
+// === Usage Analytics ===
+
+export interface UsageSummary {
+  developerId: string;
+  period: { days: number; since: string };
+  totalRequests: number;
+  byKey: {
+    keyId: string;
+    clientId: string;
+    environment: string;
+    totalRequests: number;
+    successCount: number;
+    errorCount: number;
+    avgResponseMs: number;
+  }[];
+  byEndpoint: { method: string; endpoint: string; count: number }[];
+  byDay: { date: string; count: number }[];
+}
+
+export interface AdminUsage {
+  period: { days: number; since: string };
+  totalRequests: number;
+  totalDevelopers: number;
+  totalKeys: number;
+  byDeveloper: {
+    developerId: string;
+    developerName: string;
+    developerEmail: string;
+    totalRequests: number;
+    successCount: number;
+    errorCount: number;
+    avgResponseMs: number;
+    keyCount: number;
+  }[];
+  byEnvironment: {
+    environment: string;
+    totalRequests: number;
+    avgResponseMs: number;
+    uniqueClients: number;
+  }[];
+  byEndpoint: { method: string; endpoint: string; count: number; avgResponseMs: number }[];
+  byDay: { date: string; count: number; uniqueClients: number }[];
+  todayByHour: { hour: number; count: number }[];
+}
+
+export interface RecentLogs {
+  count: number;
+  logs: {
+    clientId: string;
+    endpoint: string;
+    method: string;
+    statusCode: number;
+    environment: string;
+    responseTimeMs: number;
+    timestamp: string;
+    developerId: string;
+  }[];
+}
+
+export async function getDeveloperUsage(developerId: string, days = 7): Promise<UsageSummary> {
+  return apiFetch(`/api/developers/${developerId}/usage?days=${days}`);
+}
+
+export async function getAdminUsage(adminKey: string, days = 7): Promise<AdminUsage> {
+  return apiFetch(`/api/admin/usage?days=${days}`, {
+    headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey },
+  });
+}
+
+export async function getAdminRecentLogs(adminKey: string, count = 50): Promise<RecentLogs> {
+  return apiFetch(`/api/admin/usage/recent?count=${count}`, {
+    headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey },
+  });
+}

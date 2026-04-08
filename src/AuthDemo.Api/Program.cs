@@ -1,5 +1,6 @@
 using System.Threading.RateLimiting;
 using AuthDemo.Api.Data;
+using AuthDemo.Api.Middleware;
 using AuthDemo.Api.Models;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
@@ -167,6 +168,7 @@ app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
+app.UseApiUsageLogging();
 app.MapControllers();
 
 app.Run();

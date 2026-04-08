@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Quote> Quotes => Set<Quote>();
     public DbSet<Developer> Developers => Set<Developer>();
     public DbSet<ApiKey> ApiKeys => Set<ApiKey>();
+    public DbSet<ApiUsageLog> ApiUsageLogs => Set<ApiUsageLog>();
 
     public DbSet<OpenIddictEntityFrameworkCoreApplication> OpenIddictApplications => Set<OpenIddictEntityFrameworkCoreApplication>();
     public DbSet<OpenIddictEntityFrameworkCoreAuthorization> OpenIddictAuthorizations => Set<OpenIddictEntityFrameworkCoreAuthorization>();
@@ -32,6 +33,13 @@ public class ApplicationDbContext : DbContext
         builder.Entity<ApiKey>(e =>
         {
             e.HasIndex(k => k.ClientId).IsUnique();
+        });
+
+        builder.Entity<ApiUsageLog>(e =>
+        {
+            e.HasIndex(l => l.ClientId);
+            e.HasIndex(l => l.DeveloperId);
+            e.HasIndex(l => l.Timestamp);
         });
     }
 }
