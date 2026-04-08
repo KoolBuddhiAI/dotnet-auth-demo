@@ -95,7 +95,7 @@ export default function KeyManager({ developer, onRefresh }: Props) {
   };
 
   const groupedKeys: Record<string, ApiKeyInfo[]> = { Dev: [], Stage: [], Prod: [] };
-  developer.keys.forEach((k) => {
+  (developer.keys ?? []).forEach((k) => {
     if (groupedKeys[k.environment]) groupedKeys[k.environment].push(k);
   });
 
