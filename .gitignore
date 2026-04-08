@@ -4,3 +4,8 @@ obj/
 *.suo
 .vs/
 *.DotSettings.user
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local

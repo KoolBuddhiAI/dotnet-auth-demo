@@ -1,7 +1,1 @@
-namespace AuthDemo.Api.Models;
-
-public class ClientRegistrationRequest
-{
-    public string Name { get; set; } = string.Empty;
-    public List<string> Scopes { get; set; } = new() { "api.read" };
-}
+// This file is intentionally left empty — replaced by models in DevelopersController.
