@@ -1,0 +1,173 @@
+{
+  "format": 1,
+  "restore": {
+    "/root/.openclaw/workspace/WIP/dotnet-auth-demo/tests/AuthDemo.Api.Tests/AuthDemo.Api.Tests.csproj": {}
+  },
+  "projects": {
+    "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/AuthDemo.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/AuthDemo.Api.csproj",
+        "projectName": "AuthDemo.Api",
+        "projectPath": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/AuthDemo.Api.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "OpenIddict.AspNetCore": {
+              "target": "Package",
+              "version": "[5.8.0, )"
+            },
+            "OpenIddict.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.8.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/.openclaw/workspace/WIP/dotnet-auth-demo/tests/AuthDemo.Api.Tests/AuthDemo.Api.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/tests/AuthDemo.Api.Tests/AuthDemo.Api.Tests.csproj",
+        "projectName": "AuthDemo.Api.Tests",
+        "projectPath": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/tests/AuthDemo.Api.Tests/AuthDemo.Api.Tests.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/tests/AuthDemo.Api.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/AuthDemo.Api.csproj": {
+                "projectPath": "/root/.openclaw/workspace/WIP/dotnet-auth-demo/src/AuthDemo.Api/AuthDemo.Api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
