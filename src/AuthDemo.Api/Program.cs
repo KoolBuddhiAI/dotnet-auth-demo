@@ -10,8 +10,14 @@ using static OpenIddict.Abstractions.OpenIddictConstants;
 var builder = WebApplication.CreateBuilder(args);
 
 // === Database ===
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseInMemoryDatabase("AuthDemoDb"));
+{
+    if (!string.IsNullOrEmpty(connectionString))
+        options.UseNpgsql(connectionString);
+    else
+        options.UseInMemoryDatabase("AuthDemoDb");
+});
 
 // === OpenIddict (OAuth2 server) ===
 builder.Services.AddOpenIddict()
@@ -96,10 +102,12 @@ builder.Services.AddRateLimiter(options =>
 });
 
 // === CORS ===
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()
+    ?? new[] { "http://localhost:3000" };
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
@@ -110,11 +118,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// === Seed quotes ===
+// === Database init ===
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.EnsureCreated();
+    if (!string.IsNullOrEmpty(connectionString))
+        db.Database.Migrate();
+    else
+        db.Database.EnsureCreated();
 
     if (!db.Quotes.Any())
     {
@@ -154,11 +165,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.Urls.Add("https://localhost:7090");
-app.Urls.Add("http://localhost:5090");
-
 if (app.Environment.IsDevelopment())
 {
+    app.Urls.Add("https://localhost:7090");
+    app.Urls.Add("http://localhost:5090");
     app.UseSwagger();
     app.UseSwaggerUI();
 }

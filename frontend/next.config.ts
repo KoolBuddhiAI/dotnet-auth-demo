@@ -1,15 +1,18 @@
 import type { NextConfig } from "next";
 
+const apiUrl = process.env.API_URL ?? "http://localhost:5090";
+
 const nextConfig: NextConfig = {
+  output: "standalone",
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:5090/api/:path*",
+        destination: `${apiUrl}/api/:path*`,
       },
       {
         source: "/connect/:path*",
-        destination: "http://localhost:5090/connect/:path*",
+        destination: `${apiUrl}/connect/:path*`,
       },
     ];
   },
